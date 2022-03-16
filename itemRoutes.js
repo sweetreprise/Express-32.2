@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     try {
         if(!req.body.name || !req.body.price) {
-            throw new ExpressError('Item and/or price cannot be empty!', 400);
+            return res.status(404).json({ "Error": "Item name and/or price must not be empty!" });
         }
         const newItem = { name: req.body.name, price: req.body.price };
         items.push(newItem);
